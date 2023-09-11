@@ -9,7 +9,10 @@ import '../../../../widgets/main_app_screens/home_screen_widgets/custom_item_pro
 import '../../../../widgets/main_app_screens/home_screen_widgets/search_field.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
-  const ServiceDetailsScreen({super.key});
+  // final Str
+  final String title;
+
+  const ServiceDetailsScreen({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +20,17 @@ class ServiceDetailsScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-
           title: CustomText('الشركات المقدمة لهذه الخدمة', 14, Colors.white),
           backgroundColor: Theme.of(context).primaryColor,
           elevation: 0,
         ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: SizeConfig.scaleHeight(15),
-              horizontal: SizeConfig.scaleWidth(10),
+            padding: EdgeInsets.only(
+              top: SizeConfig.scaleHeight(15),
+              left: SizeConfig.scaleWidth(10),
+              right: SizeConfig.scaleWidth(10),
+              bottom: 0,
             ),
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -39,7 +43,8 @@ class ServiceDetailsScreen extends StatelessWidget {
                     'ابحث عن الشركات المتوفرة',
                   ),
                   spaceH(40),
-                  CustomText(' اختر الشركة المطلوبة', 15, Theme.of(context).textTheme.titleLarge!.color!),
+                  CustomText(' اختر الشركة المطلوبة', 15,
+                      Theme.of(context).textTheme.titleLarge!.color!),
                   Divider(
                     height: SizeConfig.scaleHeight(20),
                     thickness: 0.5,
@@ -47,10 +52,27 @@ class ServiceDetailsScreen extends StatelessWidget {
                     endIndent: 20,
                     indent: 20,
                   ),
-                  CustomItemProviderServices('مواد البناء'),
-                  CustomItemProviderServices('معدات بناء'),
-                  CustomItemProviderServices('مقاول عام'),
-                  CustomItemProviderServices('عامل فني'),
+                  title != 'تجار مواد بناء'
+                      ? Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: SizeConfig.screenHeight * 0.3,
+                            ),
+                            child: CustomText(
+                                'لم يتم إضافة مقدمين خدمات بعد',
+                                16,
+                                Theme.of(context).textTheme.titleLarge!.color!),
+                          ),
+                        )
+                      : ListView(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          children: const [
+                            CustomItemProviderServices(title: 'شركة رقم 1'),
+                            CustomItemProviderServices(title: 'شركة رقم 2'),
+                            CustomItemProviderServices(title: 'شركة رقم 3'),
+                          ],
+                        ),
                 ],
               ),
             ),

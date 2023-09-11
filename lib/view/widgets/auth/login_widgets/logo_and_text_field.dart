@@ -15,12 +15,14 @@ class LogoAndTextFieldsInLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-         const CustomTitleAndBackIcon(title: 'تسجيل الدخول'),
-        const CustomLogoApp(
-          height: 250,
-          imgPath: AppAssets.signIn,
-          isSvg: true,
-        ),
+        const CustomTitleAndBackIcon(title: 'تسجيل الدخول'),
+        // const CustomLogoApp(
+        //   height: 250,
+        //   imgPath: AppAssets.signIn,
+        //   isSvg: true,
+        // ),
+
+        const CustomImageApp(path: AppAssets.signIn, height: 250,isSvg: true),
         CustomTitleAndTextField(
           'رقم الجوال',
           '+966 123456789',
@@ -36,7 +38,6 @@ class LogoAndTextFieldsInLogin extends StatelessWidget {
           TextInputType.visiblePassword,
           true,
           acceptedTheme: false,
-
         ),
         spaceH(30),
       ],

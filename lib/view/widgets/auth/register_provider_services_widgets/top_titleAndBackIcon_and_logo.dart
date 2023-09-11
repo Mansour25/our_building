@@ -30,9 +30,15 @@ class TopRowAndLogo extends StatelessWidget {
             CustomText('إنشاء حساب كمقدم خدمة', 14, Colors.black),
           ],
         ),
-        const CustomLogoApp(
+        // const CustomLogoApp(
+        //   height: 350,
+        //   imgPath: AppAssets.signUp,
+        //   isSvg: true,
+        // ),
+
+        const CustomImageApp(
+          path: AppAssets.signUp,
           height: 350,
-          imgPath: AppAssets.signUp,
           isSvg: true,
         ),
       ],

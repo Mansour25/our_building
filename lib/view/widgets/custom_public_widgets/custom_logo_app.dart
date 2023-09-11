@@ -10,27 +10,32 @@ import 'package:jovial_svg/jovial_svg.dart';
 
 class CustomLogoApp extends StatelessWidget {
   final double height;
-  final String imgPath;
-  final bool isSvg;
-
+  final double paddingWidth;
+final double scale ;
   // image default is the app logo
   const CustomLogoApp({
     Key? key,
     required this.height,
-    this.imgPath = AppAssets.logoApp,
-    this.isSvg = false,
+    required this.paddingWidth,
+    required this.scale,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
+      child: Container(
         height: SizeConfig.scaleHeight(height),
-        child: CircleAvatar(
-          backgroundColor: AppColor.mainAppColor,
-          radius: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(300),
+          color: AppColor.mainAppColor,
+        ),
+        child: AspectRatio(
+          aspectRatio: 1.0,
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: EdgeInsets.symmetric(
+              vertical: SizeConfig.scaleHeight(0),
+              horizontal: SizeConfig.scaleWidth(paddingWidth),
+            ),
             child: ScalableImageWidget.fromSISource(
               si: ScalableImageSource.fromSvg(
                 MySVG(imagePath: AppAssets.logoApp),
@@ -38,11 +43,41 @@ class CustomLogoApp extends StatelessWidget {
                 'key',
                 compact: false,
               ),
-              scale: 0.8,
+              scale: scale,
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomImageApp extends StatelessWidget {
+  final String path;
+  final double height;
+  final bool isSvg;
+
+  const CustomImageApp(
+      {super.key,
+      required this.path,
+      required this.height,
+      required this.isSvg});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: SizeConfig.scaleHeight(height),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(path),
+        ),
+      ),
+      child: isSvg
+          ? SvgPicture.asset(
+              path,
+              fit: BoxFit.fitHeight,
+            )
+          : Image.asset(path, fit: BoxFit.fitHeight),
     );
   }
 }
@@ -59,8 +94,8 @@ class MySVG extends AssetBundle {
   }
 
   @override
-  Future<T> loadStructuredData<T>(String key,
-      Future<T> Function(String value) parser) {
+  Future<T> loadStructuredData<T>(
+      String key, Future<T> Function(String value) parser) {
     // TODO: implement loadStructuredData
     throw UnimplementedError();
   }
@@ -72,7 +107,7 @@ class TitleAndBackIcon extends StatelessWidget {
 
   final Function()? function;
 
-  TitleAndBackIcon(this.title, this.function);
+  const TitleAndBackIcon(this.title, this.function, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +130,3 @@ class TitleAndBackIcon extends StatelessWidget {
 /*
 
  */
-
-
-

@@ -8,6 +8,7 @@ import '../../../../core/class/app_data/app_color.dart';
 import '../../../../core/class/size_config/size_config.dart';
 import '../../custom_public_widgets/custom_logo_app.dart';
 import '../../custom_public_widgets/custom_text.dart';
+
 class BuildUserTypeItem extends StatelessWidget {
   final bool isUser;
 
@@ -40,14 +41,21 @@ class BuildUserTypeItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            CustomLogoApp(
-              height: 120,
-              imgPath: isUser
-                  ? AppAssets.registerAsUser
-                  : AppAssets.registerAsServiceProvider,
-              isSvg: false,
-            ),
-            Spacer(),
+            // CustomLogoApp(
+            //   height: 120,
+            //   imgPath: isUser
+            //       ? AppAssets.registerAsUser
+            //       : AppAssets.registerAsServiceProvider,
+            //   isSvg: false,
+            // ),
+            CustomImageApp(
+                path: isUser
+                    ? AppAssets.registerAsUser
+                    : AppAssets.registerAsServiceProvider,
+                height: 120,
+                isSvg: false),
+
+            const Spacer(),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: SizeConfig.scaleWidth(20),

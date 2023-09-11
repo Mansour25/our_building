@@ -55,6 +55,8 @@ dev_dependencies:
   hive:
   path_provider:
   jovial_svg: ^1.1.17
+  animations:
+#  device_preview:
 
 #  flutter_svg_provider: ^1.0.6
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:our_building/core/class/app_data/app_color.dart';
 
 import '../../../../core/class/size_config/size_config.dart';
+import '../../custom_public_widgets/custom_text.dart';
 
 class CustomSearchField extends StatelessWidget {
   final Function(String)? onChanged;
@@ -23,6 +25,15 @@ class CustomSearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
+        onTap: () {
+          // اخفاء كل snackBars
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: CustomText('قيد التطوير', 14, Colors.white),
+            ),
+          );
+        },
         onChanged: onChanged,
         style: TextStyle(
           fontFamily: 'Tajawal',
@@ -40,10 +51,16 @@ class CustomSearchField extends StatelessWidget {
           hintText: hint,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide.none,
+            borderSide: BorderSide(
+              color: Theme.of(context).cardColor,
+              // dark -> black
+              // light -> white
+            ),
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide.none,
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
+            ),
             borderRadius: BorderRadius.circular(15),
           ),
           hintStyle: const TextStyle(

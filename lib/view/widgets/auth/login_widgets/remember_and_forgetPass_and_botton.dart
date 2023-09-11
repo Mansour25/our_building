@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:our_building/core/constant/constant_user_data.dart';
-
 import '../../../../controller/auth/logic_controller.dart';
 import '../../../../core/class/app_data/app_color.dart';
 import '../../../../core/functions/spaces.dart';

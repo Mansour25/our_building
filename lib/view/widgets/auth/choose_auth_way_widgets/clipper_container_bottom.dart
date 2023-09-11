@@ -18,6 +18,7 @@ class ClipperedBottomContainerBlueWidget extends StatelessWidget {
     return ClipPath(
       clipper: ClipperContainerSignUpScreen(),
       child: Container(
+        height: SizeConfig.screenHeight * 0.5,
         padding: EdgeInsets.symmetric(
           horizontal: SizeConfig.scaleWidth(20),
         ),
@@ -26,56 +27,57 @@ class ClipperedBottomContainerBlueWidget extends StatelessWidget {
         color: AppColor.mainAppColor,
         child: Padding(
           padding: EdgeInsets.only(
-            top: SizeConfig.scaleHeight(180),
-
+            top: SizeConfig.screenHeight * 0.18,
           ),
           child: Column(
-
             mainAxisSize: MainAxisSize.max,
             children: [
-              // const Spacer(),
-
-              Column
-                (
-                children: [
-                  CustomButton(
-                    Center(
-                      child: CustomText(
-                        'تسجيل الدخول',
-                        14,
-                        Colors.black,
-                        fontWeight: FontWeight.w600,
+              Padding(
+                padding: EdgeInsets.only(
+                  top: SizeConfig.scaleHeight(40),
+                ),
+                child: Column(
+                  children: [
+                    CustomButton(
+                      Center(
+                        child: CustomText(
+                          'تسجيل الدخول',
+                          14,
+                          Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
+                      () {
+                        push(context, const LoginScreen());
+                      },
+                      double.infinity,
+                      45,
+                      Colors.white,
                     ),
-                        () {
-                      push(context, const LoginScreen());
-                    },
-                    double.infinity,
-                    45,
-                    Colors.white,
-                  ),
-                  spaceH(20),
-                  CustomButton(
-                    Center(
-                      child: CustomText(
-                        'إنشاء حساب',
-                        14,
-                        Colors.black,
-                        fontWeight: FontWeight.w600,
+                    spaceH(20),
+                    CustomButton(
+                      Center(
+                        child: CustomText(
+                          'إنشاء حساب',
+                          14,
+                          Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
+                      () {
+                        push(context, const ChooseAuthTypeScreen());
+                      },
+                      double.infinity,
+                      45,
+                      Colors.white,
                     ),
-                        () {
-                      push(context, const ChooseAuthTypeScreen());
-                    },
-                    double.infinity,
-                    45,
-                    Colors.white,
-                  ),
-                ],
+                  ],
+                ),
               ),
 
-
-              spaceH(50),
+              SizedBox(
+                height: SizeConfig.screenHeight  * 0.02,
+              ),
               TextButton(
                 onPressed: () {
                   StaticUserData.isUser = true;
@@ -87,9 +89,7 @@ class ClipperedBottomContainerBlueWidget extends StatelessWidget {
                   Colors.white,
                 ),
               ),
-              spaceH(70),
-              
-              
+              // spaceH(50),
             ],
           ),
         ),
