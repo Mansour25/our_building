@@ -10,6 +10,7 @@ const String authImages = '$mainPathAssets/auth';
 class AppAssets {
 // MainLogoApp
   static const String logoApp = '$mainPathAssets/splash/logo_app.svg';
+  static const String logoApp2 = '$mainPathAssets/splash/logo_app.png';
 
 
   // onBoarding screen logo

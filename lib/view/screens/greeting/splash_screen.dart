@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:jovial_svg/jovial_svg.dart';
 import 'package:our_building/view/screens/greeting/on_boarding_screen.dart';
 import '../../../core/class/app_data/app_assets.dart';
 import '../../../core/class/app_data/app_color.dart';
 import '../../widgets/custom_public_widgets/custom_logo_app.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreen createState() => _SplashScreen();
 }
@@ -17,6 +18,7 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
   double _containerSize = 1.5;
   double _textOpacity = 0.0;
   double _containerOpacity = 0.0;
+  double _imagePadding = 10;
 
   late AnimationController _controller;
   late Animation<double> animation1;
@@ -26,7 +28,7 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller, curve: Curves.fastLinearToSlowEaseIn))
@@ -41,6 +43,16 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
     Timer(const Duration(seconds: 2), () {
       setState(() {
         _fontSize = 1.06;
+      });
+    });
+    Timer(const Duration(milliseconds: 2500), () {
+      setState(() {
+        _imagePadding = 70;
+      });
+    });
+    Timer(const Duration(milliseconds: 3000), () {
+      setState(() {
+        _imagePadding = 5;
       });
     });
 
@@ -102,6 +114,7 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
+                padding: EdgeInsets.all(_imagePadding),
                 duration: const Duration(milliseconds: 2000),
                 curve: Curves.fastLinearToSlowEaseIn,
                 height: _width / _containerSize,
@@ -111,26 +124,26 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
                   color: AppColor.mainAppColor,
                   borderRadius: BorderRadius.circular(30),
                 ),
-// child: Image.asset('assets/images/file_name.png')
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ScalableImageWidget.fromSISource(
-                    // onLoading: (p0) {
-                    //   return Container(
-                    //     height: 100,
-                    //     width: 100,
-                    //     color: Colors.red,
-                    //   );
-                    // },
-                    si: ScalableImageSource.fromSvg(
-                      MySVG(imagePath: AppAssets.logoApp),
-                      bigFloats: false,
-                      'key',
-                      compact: false,
-                    ),
-                    scale: 0.8,
-                  ),
-                ),
+                child: Image.asset(AppAssets.logoApp2),
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: ScalableImageWidget.fromSISource(
+//                     // onLoading: (p0) {
+//                     //   return Container(
+//                     //     height: 100,
+//                     //     width: 100,
+//                     //     color: Colors.red,
+//                     //   );
+//                     // },
+//                     si: ScalableImageSource.fromSvg(
+//                       MySVG(imagePath: AppAssets.logoApp),
+//                       bigFloats: false,
+//                       'key',
+//                       compact: false,
+//                     ),
+//                     scale: 0.8,
+//                   ),
+//                 ),
               ),
             ),
           ),

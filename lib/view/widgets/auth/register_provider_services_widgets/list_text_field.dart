@@ -18,8 +18,8 @@ class ListTextFieldInRegisterProviderServices extends StatelessWidget {
           acceptedTheme: false,
         ),
         CustomTitleAndTextField(
-          'مقدم الخدمة',
-          'إسم مقدم الخدمة',
+          'المهنة',
+          'المهنة',
           TextEditingController(),
           TextInputType.phone,
           false,
@@ -33,6 +33,12 @@ class ListTextFieldInRegisterProviderServices extends StatelessWidget {
           false,
           acceptedTheme: false,
         ),
+        const SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: Text('مقدم خدمة'),
+        ),
+
         CustomTitleAndTextField(
           'رقم الجوال',
           '+966 1234456789',
@@ -41,14 +47,15 @@ class ListTextFieldInRegisterProviderServices extends StatelessWidget {
           false,
           acceptedTheme: false,
         ),
-        CustomTitleAndTextField(
-          'رقم الجوال',
-          '+966 1234456789',
+      CustomTitleAndTextField(
+          'البريد الإلكتروني',
+          'example@gmail.com',
           TextEditingController(),
-          TextInputType.phone,
+          TextInputType.emailAddress,
           false,
           acceptedTheme: false,
         ),
+
         CustomTitleAndTextField(
           'العنوان',
           'جدة الشارع الخامس',

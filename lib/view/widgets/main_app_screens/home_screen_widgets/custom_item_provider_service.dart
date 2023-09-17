@@ -50,7 +50,7 @@ class CustomItemProviderServices extends StatelessWidget {
               spaceH(30),
             ],
           ),
-          const CommunicatedButton(),
+          const CommunicatedToWastsappButton(),
           const CustomContainerClipperContainImage(),
         ],
       ),
@@ -143,8 +143,8 @@ class CustomRichText extends StatelessWidget {
   }
 }
 
-class CommunicatedButton extends StatelessWidget {
-  const CommunicatedButton({super.key});
+class CommunicatedToWastsappButton extends StatelessWidget {
+  const CommunicatedToWastsappButton({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,8 @@ final double scale ;
       child: Container(
         height: SizeConfig.scaleHeight(height),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(300),
+          shape: BoxShape.circle,
+          // borderRadius: BorderRadius.circular(300),
           color: AppColor.mainAppColor,
         ),
         child: AspectRatio(
